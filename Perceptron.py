@@ -58,3 +58,10 @@ err, target = 1, 0
 
 # The number of epoch 0-10
 epoch, max_epochs = 0, 10
+
+# Run the network
+# Will run until mean square error is 0 or epochs exceed 10
+while err > target and epoch < max_epochs:
+    epoch += 1
+    err, _ = session.run([mse,train])
+    print('epoch: ', epoch, 'mse: ', err)
