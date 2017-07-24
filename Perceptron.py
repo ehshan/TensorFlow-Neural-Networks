@@ -19,3 +19,7 @@ train_out = [
     [F],
     [F],
 ]
+
+# Weights (3 x 1 tensor to match input patterns)
+# Values initial to random
+w = tf.Variable(tf.random_normal([3, 1]))
