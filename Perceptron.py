@@ -31,3 +31,12 @@ def step(x):
     as_float = tf.to_float(is_greater)
     double = tf.multiply(as_float, 2)
     return tf.subtract(double, 1)
+
+# Output function
+output = step(tf.matmul(train_in, w))
+
+# Error function
+error = tf.subtract(train_out, output)
+
+# Mean Square Error
+mse = tf.reduce_mean(tf.square(error))
