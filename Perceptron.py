@@ -55,3 +55,6 @@ session.run(tf.initialize_all_variables())
 
 # Initial error and the target value
 err, target = 1, 0
+
+# The number of epoch 0-10
+epoch, max_epochs = 0, 10
