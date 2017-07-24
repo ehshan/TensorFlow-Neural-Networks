@@ -21,5 +21,13 @@ train_out = [
 ]
 
 # Weights (3 x 1 tensor to match input patterns)
-# Values initial to random
+# Values randomly initialised
 w = tf.Variable(tf.random_normal([3, 1]))
+
+# Step Activation Function
+# If x > 0 return 1 else return -1
+def step(x):
+    is_greater = tf.greater(x, 0)
+    as_float = tf.to_float(is_greater)
+    double = tf.multiply(as_float, 2)
+    return tf.subtract(double, 1)
