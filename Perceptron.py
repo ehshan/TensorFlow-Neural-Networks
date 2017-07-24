@@ -52,3 +52,6 @@ train = tf.assign(weight, tf.add(weight, delta))
 # Create a TensorFlow session
 session = tf.Session()
 session.run(tf.initialize_all_variables())
+
+# Initial error and the target value
+err, target = 1, 0
