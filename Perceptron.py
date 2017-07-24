@@ -40,3 +40,9 @@ error = tf.subtract(train_out, output)
 
 # Mean Square Error
 mse = tf.reduce_mean(tf.square(error))
+
+# Calculating the weight adjustment determined by error
+delta = tf.matmul(train_in, error, transpose_a=True)
+
+# Assignment the adjustment value to the weight tensor
+train = tf.assign(w, tf.add(w, delta))
