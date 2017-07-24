@@ -11,3 +11,11 @@ train_in = [
     [F, T, bias],
     [F, F, bias],
 ]
+
+# Output patterns for input set
+train_out = [
+    [T],
+    [F],
+    [F],
+    [F],
+]
