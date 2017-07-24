@@ -46,3 +46,7 @@ delta = tf.matmul(train_in, error, transpose_a=True)
 
 # Assignment the adjustment value to the weight tensor
 train = tf.assign(w, tf.add(w, delta))
+
+# Create a TensorFlow session
+sess = tf.Session()
+sess.run(tf.initialize_all_variables())
