@@ -51,7 +51,14 @@ session = tf.Session()
 session.run(tf.initialize_all_variables())
 
 # Initial error and the target value
-err, target = 1, 0
+err, target = 1.0, 0.1
 
 # The number of epoch 0-10000
-epoch, max_epochs = 0, 10000
+epoch, max_epoch = 0, 10000
+
+# Main training function
+while err > target and epoch < max_epoch:
+    epoch += 1
+    err, _ = session.run([mse, train])
+    if (epoch % 1000) == 0:
+        print('epoch:', epoch, 'mse:', err)
