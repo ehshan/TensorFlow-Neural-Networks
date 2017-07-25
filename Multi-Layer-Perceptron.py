@@ -17,3 +17,12 @@ training_out = [
     [T],
     [F],
 ]
+
+
+# Weights and biases for input layer
+weight_1 = tf.Variable(tf.random_normal([2, 2]))
+bias_1 = tf.Variable(tf.zeros([2]))
+
+# Weights and biases for hidden layer
+weight_2 = tf.Variable(tf.random_normal([2, 1]))
+bias_2 = tf.Variable(tf.zeros([1]))
