@@ -12,13 +12,21 @@ training_in = [
     [F, F, bias],
 ]
 
-# Output patterns for input set
+# Output patterns for an AND input set
 training_out = [
     [T],
     [F],
     [F],
     [F],
 ]
+
+# # Output patterns for an OR input set
+# training_out = [
+#     [T],
+#     [F],
+#     [F],
+#     [F],
+# ]
 
 # Weights (3 x 1 tensor to match input patterns)
 # Values randomly initialised
