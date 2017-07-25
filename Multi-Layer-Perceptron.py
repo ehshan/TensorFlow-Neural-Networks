@@ -42,3 +42,6 @@ error = tf.subtract(training_out, output2)
 
 # Mean Square Error
 mse = tf.reduce_mean((tf.square(error)))
+
+# Training set to minimise the mean square error (data set -1 to 1) -  optimised on gradient decent
+train = tf.train.GradientDescentOptimizer(0.01).minimize(mse)
