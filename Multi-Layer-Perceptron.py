@@ -45,3 +45,10 @@ mse = tf.reduce_mean((tf.square(error)))
 
 # Training set to minimise the mean square error (data set -1 to 1) -  optimised on gradient decent
 train = tf.train.GradientDescentOptimizer(0.01).minimize(mse)
+
+
+# Initial error and the target value
+err, target = 1, 0
+
+# The number of epoch 0-10000
+epoch, max_epochs = 0, 10000
