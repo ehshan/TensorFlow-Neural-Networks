@@ -35,3 +35,10 @@ def sigmoid(x):
 output1 = sigmoid(tf.add(tf.matmul(training_in, weight_1), bias_1))
 
 output2 = sigmoid(tf.add(tf.matmul(output1, weight_2), bias_2))
+
+
+# error function
+error = tf.subtract(training_out, output2)
+
+# Mean Square Error
+mse = tf.reduce_mean((tf.square(error)))
