@@ -31,11 +31,11 @@ bias_2 = tf.Variable(tf.zeros([1]))
 def sigmoid(x):
     return 1 / (1 + tf.exp(-x))
 
+
 # Bias can be adjusted so form part of the output equation
 output1 = sigmoid(tf.add(tf.matmul(training_in, weight_1), bias_1))
 
 output2 = sigmoid(tf.add(tf.matmul(output1, weight_2), bias_2))
-
 
 # error function
 error = tf.subtract(training_out, output2)
@@ -46,6 +46,9 @@ mse = tf.reduce_mean((tf.square(error)))
 # Training set to minimise the mean square error (data set -1 to 1) -  optimised on gradient decent
 train = tf.train.GradientDescentOptimizer(0.01).minimize(mse)
 
+# Create a TensorFlow session
+session = tf.Session()
+session.run(tf.initialize_all_variables())
 
 # Initial error and the target value
 err, target = 1, 0
