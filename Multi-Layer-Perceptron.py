@@ -30,3 +30,8 @@ bias_2 = tf.Variable(tf.zeros([1]))
 # Sigmoid Activation Function
 def sigmoid(x):
     return 1 / (1 + tf.exp(-x))
+
+# Bias can be adjusted so form part of the output equation
+output1 = sigmoid(tf.add(tf.matmul(training_in, weight_1), bias_1))
+
+output2 = sigmoid(tf.add(tf.matmul(output1, weight_2), bias_2))
