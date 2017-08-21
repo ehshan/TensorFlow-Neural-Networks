@@ -37,3 +37,8 @@ plt.figure(figsize=(12, 8))
 plt.scatter(data_features[:, 0], data_features[:, 1], c=data_labels, alpha=.5)
 # Show graph
 plt.show()
+
+# DATA NORMALISATION
+# One-hot encoding for data labels
+onehot_labels = np.zeros((data_labels.shape[0], 3)).astype(int)
+onehot_labels[np.arange(len(data_labels)), data_labels.astype(int)] = 1
