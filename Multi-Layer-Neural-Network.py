@@ -88,3 +88,7 @@ with graph.as_default():
     loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(model_scores, tf_training_labels))
 
     gradient_optimiser = tf.train.GradientDescentOptimizer(learning_rate).minimize(loss)
+
+    # Predictions - normalise output array to label probabilities - so sum of values=1
+    train_prediction = tf.nn.softmax(model_scores)
+    test_prediction = tf.nn.softmax(three_layer_network(tf_test_data))
