@@ -63,3 +63,14 @@ with graph.as_default():
     tf_training_data = tf.placeholder(tf.float32, shape=[None, num_features])
     tf_training_labels = tf.placeholder(tf.float32, shape=[None, num_labels])
     tf_test_data = tf.constant(test_data)
+
+    # Weights
+    # Layer 1 array matches number of hidden nodes
+    layer1_weights = tf.Variable(tf.truncated_normal([num_features, hidden_nodes]))
+    # Layer 2 array matches number of labels
+    layer2_weights = tf.Variable(tf.truncated_normal([hidden_nodes, num_labels]))
+
+    # Biases for layers
+    layer1_biases = tf.Variable(tf.zeros([hidden_nodes]))
+    layer2_biases = tf.Variable(tf.zeros([num_labels]))
+
