@@ -81,3 +81,6 @@ with graph.as_default():
         output_layer = tf.matmul(hidden_layer, layer2_weights) + layer2_biases
         return output_layer
 
+    # Variable to hold model output
+    model_scores = three_layer_network(tf_training_data)
+
