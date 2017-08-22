@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
+import tensorflow as tf
 
 # generate sample data
 np.random.seed(1)
@@ -48,9 +49,17 @@ onehot_labels[np.arange(len(data_labels)), data_labels.astype(int)] = 1
 training_data, test_data, training_labels, test_labels = \
     train_test_split(data_features, onehot_labels, test_size=.1, random_state=12)
 
-# NETWORK ARCHITECTURE 
+# NETWORK ARCHITECTURE
 # Assign Network Variables
 hidden_nodes = 5
 num_labels = training_labels.shape[1]
 num_features = training_data.shape[1]
 learning_rate = .01
+
+graph = tf.Graph()
+with graph.as_default():
+
+    # Generate data for TensorFlow
+    tf_training_data = tf.placeholder(tf.float32, shape=[None, num_features])
+    tf_training_labels = tf.placeholder(tf.float32, shape=[None, num_labels])
+    tf_test_data = tf.constant(test_data)
