@@ -87,6 +87,7 @@ with graph.as_default():
     # Loss Function
     loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(model_scores, tf_training_labels))
 
+    # Training set to minimise loss
     gradient_optimiser = tf.train.GradientDescentOptimizer(learning_rate).minimize(loss)
 
     # Predictions - normalise output array to label probabilities - so sum of values=1
