@@ -74,3 +74,10 @@ with graph.as_default():
     layer1_biases = tf.Variable(tf.zeros([hidden_nodes]))
     layer2_biases = tf.Variable(tf.zeros([num_labels]))
 
+    # Three Layer Network Architecture
+    def three_layer_network(data):
+        input_layer = tf.matmul(data, layer1_weights)
+        hidden_layer = tf.nn.relu(input_layer + layer1_biases)
+        output_layer = tf.matmul(hidden_layer, layer2_weights) + layer2_biases
+        return output_layer
+
