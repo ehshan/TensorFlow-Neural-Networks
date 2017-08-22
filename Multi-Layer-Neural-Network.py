@@ -82,5 +82,8 @@ with graph.as_default():
         return output_layer
 
     # Variable to hold model output
-    model_scores = three_layer_network(tf_training_data)
+    model_scores = three_layer_network(tf_training_data
+
+    # Loss Function
+    loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(model_scores, tf_training_labels))
 
