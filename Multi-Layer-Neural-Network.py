@@ -47,3 +47,10 @@ onehot_labels[np.arange(len(data_labels)), data_labels.astype(int)] = 1
 # split data to train/test
 training_data, test_data, training_labels, test_labels = \
     train_test_split(data_features, onehot_labels, test_size=.1, random_state=12)
+
+# NETWORK ARCHITECTURE 
+# Assign Network Variables
+hidden_nodes = 5
+num_labels = training_labels.shape[1]
+num_features = training_data.shape[1]
+learning_rate = .01
