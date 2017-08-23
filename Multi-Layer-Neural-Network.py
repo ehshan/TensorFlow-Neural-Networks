@@ -125,4 +125,6 @@ with tf.Session(graph=graph) as session:
         _, l, predictions = session.run([gradient_optimiser, loss, train_prediction], feed_dict=feed_dict)
 
         if epoch % 1000 == 0:
-            print('Mini-batch loss at step {0}: {1}'.format(epoch, l))
+            print(' Epoch: {0}: Mini-batch loss: {1}'.format(epoch, l))
+
+    print('Test accuracy: {0}%'.format(accuracy(test_prediction.eval(), test_labels)))
