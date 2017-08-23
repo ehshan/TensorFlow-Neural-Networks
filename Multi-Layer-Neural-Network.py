@@ -128,3 +128,10 @@ with tf.Session(graph=graph) as session:
             print(' Epoch: {0}: Mini-batch loss: {1}'.format(epoch, l))
 
     print('Test accuracy: {0}%'.format(accuracy(test_prediction.eval(), test_labels)))
+
+    # Show number of correction and incorrect classifications
+    labels_plot = np.argmax(test_labels, axis=1)
+    t_predictions = np.argmax(test_prediction.eval(), axis=1)
+    plt.figure(figsize=(12, 8))
+    plt.scatter(test_data[:, 0], test_data[:, 1], c=t_predictions == labels_plot - 1, alpha=.5)
+    plt.show()
