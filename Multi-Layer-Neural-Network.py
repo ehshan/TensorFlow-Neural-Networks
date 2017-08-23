@@ -73,12 +73,14 @@ with graph.as_default():
     layer1_biases = tf.Variable(tf.zeros([hidden_nodes]))
     layer2_biases = tf.Variable(tf.zeros([num_labels]))
 
+
     # Three Layer Network Architecture
     def three_layer_network(data):
         input_layer = tf.matmul(data, layer1_weights)
         hidden_layer = tf.nn.relu(input_layer + layer1_biases)
         output_layer = tf.matmul(hidden_layer, layer2_weights) + layer2_biases
         return output_layer
+
 
     # Variable to hold model output
     model_scores = three_layer_network(tf_training_data)
@@ -100,3 +102,20 @@ def accuracy(predictions, labels):
     correct_predictions = np.sum(prediction_boolean)
     accuracy = 100.0 * correct_predictions / predictions.shape[0]
     return accuracy
+
+
+# RUN THE NETWORK
+
+# Number of iterations
+epochs = 10000
+# size of data partitions
+batch_size = 100
+
+with tf.Session(graph=graph) as session:
+    tf.initialize_all_variables().run()
+
+    for epoch in range(epochs):
+        # Partition the training data
+        offset = (epoch * batch_size) % (training_labels.shape[0] - batch_size)
+        partition_data = training_data[offset:(offset + batch_size)]
+        partition_labels = training_labels[offset:(offset + batch_size)]
