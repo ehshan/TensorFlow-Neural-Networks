@@ -86,7 +86,7 @@ with graph.as_default():
     model_scores = three_layer_network(tf_training_data)
 
     # Loss Function
-    loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(model_scores, tf_training_labels))
+    loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=model_scores, labels=tf_training_labels))
 
     # Training set to minimise loss
     gradient_optimiser = tf.train.GradientDescentOptimizer(learning_rate).minimize(loss)
@@ -119,3 +119,10 @@ with tf.Session(graph=graph) as session:
         offset = (epoch * batch_size) % (training_labels.shape[0] - batch_size)
         partition_data = training_data[offset:(offset + batch_size)]
         partition_labels = training_labels[offset:(offset + batch_size)]
+
+        feed_dict = {tf_training_data: partition_data, tf_training_labels: partition_labels}
+
+        _, l, predictions = session.run([gradient_optimiser, loss, train_prediction], feed_dict=feed_dict)
+
+        if epoch % 1000 == 0:
+            print('Mini-batch loss at step {0}: {1}'.format(epoch, l))
