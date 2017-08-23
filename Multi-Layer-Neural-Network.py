@@ -58,7 +58,6 @@ learning_rate = .01
 
 graph = tf.Graph()
 with graph.as_default():
-
     # Generate data for TensorFlow
     tf_training_data = tf.placeholder(tf.float32, shape=[None, num_features])
     tf_training_labels = tf.placeholder(tf.float32, shape=[None, num_labels])
@@ -93,3 +92,11 @@ with graph.as_default():
     # Predictions - normalise output array to label probabilities - so sum of values=1
     train_prediction = tf.nn.softmax(model_scores)
     test_prediction = tf.nn.softmax(three_layer_network(tf_test_data))
+
+
+# For labels compute the num of correct prediction over total predictions
+def accuracy(predictions, labels):
+    prediction_boolean = np.argmax(predictions, 1) == np.argmax(labels, 1)
+    correct_predictions = np.sum(prediction_boolean)
+    accuracy = 100.0 * correct_predictions / predictions.shape[0]
+    return accuracy
